@@ -1,31 +1,47 @@
 # =====================================================================
 # Crossplane XRD — CompositeResourceDefinition
 # =====================================================================
-# TODO 2: Completa este archivo con tu XRD
-#
-# Guía de referencia:
-#   https://docs.crossplane.io/latest/concepts/composite-resource-definitions/
-#
-# Este XRD debe:
-#   - Definir un Composite Resource llamado XPostgreSQLInstance
-#   - Exponer al menos 2 parámetros (ej: dbName, owner)
-#   - Usar el grupo database.poc.io/v1alpha1
+# Define la API XPostgreSQLInstance (Composite Resource) y su Claim
+# asociado PostgreSQLInstance, en el grupo database.poc.io/v1alpha1.
 # =====================================================================
 
-# apiVersion: apiextensions.crossplane.io/v1
-# kind: CompositeResourceDefinition
-# metadata:
-#   name: ...
-#   annotations:
-#     argocd.argoproj.io/sync-wave: "1"
-# spec:
-#   group: ...
-#   names:
-#     kind: ...
-#   versions:
-#     - name: v1alpha1
-#       served: true
-#       referenceable: true
-#       schema:
-#         openAPIV3Schema:
-#           ...
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: xpostgresqlinstances.database.poc.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  group: database.poc.io
+  names:
+    kind: XPostgreSQLInstance
+    plural: xpostgresqlinstances
+  claimNames:
+    kind: PostgreSQLInstance
+    plural: postgresqlinstances
+  versions:
+    - name: v1alpha1
+      served: true
+      referenceable: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                parameters:
+                  type: object
+                  description: Parámetros configurables por el equipo de desarrollo.
+                  properties:
+                    dbName:
+                      type: string
+                      description: Nombre de la base de datos PostgreSQL a crear.
+                    owner:
+                      type: string
+                      description: Rol/usuario propietario de la base de datos.
+                  required:
+                    - dbName
+                    - owner
+              required:
+                - parameters
