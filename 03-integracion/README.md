@@ -55,7 +55,7 @@ Simula que alguien modificó el Claim directamente en el clúster (lo que en Git
 
 ```bash
 # Cambiar el dbName DIRECTAMENTE en el clúster (sin pasar por Git)
-kubectl patch xpostgresqlinstance mi-base-de-datos -n default \
+kubectl patch postgresqlinstance mi-base-de-datos -n default \
   --type='merge' \
   -p '{"spec":{"parameters":{"dbName":"appdb-hacked"}}}'
 ```

@@ -154,7 +154,7 @@ argocd repo list
 # GitHub → Settings → Developer Settings → Personal Access Tokens
 argocd repo add https://github.com/AndresRicardoAlbarracin/2026-20_ARTI-4219_S4_GitOps.git \
   --username TU-USUARIO-GITHUB \
-  --password TU-PERSONAL-ACCESS-TOKEN
+  --password T0k3nC4mb14d0P0rS3gur1d4d
 
 argocd repo list
 ```
@@ -190,7 +190,7 @@ kubectl apply -f 02-argocd/app-gitops-demo.yaml
 argocd app get gitops-demo
 
 # Ver todos los recursos gestionados por Argo CD
-argocd app resources crossplane-infra
+argocd app resources gitops-demo
 ```
 
 ### Confirmar la base de datos en PostgreSQL
@@ -225,10 +225,10 @@ git commit -m "feat: rename database to appdb-v2"
 git push origin main
 
 # Forzar sincronización inmediata (sin esperar el polling)
-argocd app sync crossplane-infra
+argocd app sync gitops-demo
 
 # Observar
-argocd app get crossplane-infra
+argocd app get gitops-demo
 kubectl get databases.postgresql.postgresql.upbound.io
 ```
 
