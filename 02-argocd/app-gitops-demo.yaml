@@ -9,8 +9,7 @@ metadata:
 spec:
   project: default
   source:
-    # REEMPLAZA con la URL de tu repositorio
-    repoURL: https://github.com/LauraCortes/crossplane_test
+    repoURL: https://github.com/AndresRicardoAlbarracin/2026-20_ARTI-4219_S4_GitOps.git
     targetRevision: main
     path: 01-crossplane          # Directorio donde están los manifiestos
   destination:
