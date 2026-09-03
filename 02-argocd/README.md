@@ -144,7 +144,7 @@ git push origin main
 **Repositorio público:**
 
 ```bash
-argocd repo add https://github.com/TU-USUARIO/TU-REPOSITORIO.git
+argocd repo add https://github.com/AndresRicardoAlbarracin/2026-20_ARTI-4219_S4_GitOps.git
 argocd repo list
 ```
 
@@ -152,7 +152,7 @@ argocd repo list
 
 ```bash
 # GitHub → Settings → Developer Settings → Personal Access Tokens
-argocd repo add https://github.com/TU-USUARIO/TU-REPOSITORIO.git \
+argocd repo add https://github.com/AndresRicardoAlbarracin/2026-20_ARTI-4219_S4_GitOps.git \
   --username TU-USUARIO-GITHUB \
   --password TU-PERSONAL-ACCESS-TOKEN
 
